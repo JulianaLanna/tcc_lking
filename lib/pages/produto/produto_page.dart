@@ -22,7 +22,7 @@ class _ProdutoPageState extends State<ProdutoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lista de Produtos"),
+        title: Text("Lista de Chamado"),
         actions: <Widget>[
           RaisedButton(
             color: Theme.of(context).primaryColor,
@@ -63,8 +63,8 @@ class _ProdutoPageState extends State<ProdutoPage> {
                   },
                   //Now we paint the list with all the records, which will have a number, name, phone
                   child: ListTile(
-                    title: Text(item.name),
-                    subtitle: Text(item.quantidade),
+                    title: Text(item.descricao),
+                    subtitle: Text(item.proprietario),
                     leading: CircleAvatar(child: Text(item.id.toString())),
                     //If we press one of the cards, it takes us to the page to edit, with the data onTap:
                     //This method is in the file add_editclient.dart

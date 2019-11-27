@@ -15,9 +15,11 @@ class ProdutoDetail extends StatefulWidget {
 }
 
 class _ProdutoDetailState extends State<ProdutoDetail> {
-  TextEditingController nameEditingController = TextEditingController();
-  TextEditingController quantidadeEditingController = TextEditingController();
-  TextEditingController valorEditingController = TextEditingController();
+  TextEditingController descricaoEditingController = TextEditingController();
+  TextEditingController prioridadeEditingController = TextEditingController();
+  TextEditingController setorEditingController = TextEditingController();
+  TextEditingController proprietarioEditingController = TextEditingController();
+  TextEditingController localEditingController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -26,9 +28,11 @@ class _ProdutoDetailState extends State<ProdutoDetail> {
     //if you press the button to edit it must pass to true, 
     //instantiate the name and phone in its respective controller, (link them to each controller)
     if(widget.edit == true){
-      nameEditingController.text = widget.produto.name;
-      quantidadeEditingController.text = widget.produto.quantidade;
-      valorEditingController.text = widget.produto.valor;
+      descricaoEditingController.text = widget.produto.descricao;
+      prioridadeEditingController.text = widget.produto.prioridade;
+      setorEditingController.text = widget.produto.setor;
+      proprietarioEditingController.text = widget.produto.proprietario;
+      localEditingController.text = widget.produto.local;
     }
   }
 
@@ -37,7 +41,7 @@ class _ProdutoDetailState extends State<ProdutoDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.edit?"Editar Produto":"Adiciona Produto"),),
+      appBar: AppBar(title: Text(widget.edit?"Editar Chamado":"Adiciona Chamado"),),
       body: Form(
         key: _formKey,
         child: Padding(
@@ -50,12 +54,16 @@ class _ProdutoDetailState extends State<ProdutoDetail> {
                   size: 300,
                 ),
                 //if it is new record, it asks to enter data, : but it paints the data brought in the item
-                textFormField(nameEditingController, "Name", "Enter Name",
-                Icons.person, widget.edit ? widget.produto.name : "name"),
-                textFormFieldPhone(quantidadeEditingController, "Quantidade", "Enter Quantidade", 
-                Icons.person, widget.edit ? widget.produto.quantidade : "quantidade",),
-                textFormFieldPhone(valorEditingController, "Valor", "Enter Valor", 
-                Icons.person, widget.edit ? widget.produto.valor : "valor",),
+                textFormField(descricaoEditingController, "Descricao", "Enter Descricao",
+                Icons.person, widget.edit ? widget.produto.descricao : "descricao"),
+                textFormFieldPhone(prioridadeEditingController, "Prioridade", "Enter Prioridade", 
+                Icons.person, widget.edit ? widget.produto.prioridade : "prioridade",),
+                textFormFieldPhone(setorEditingController, "Setor", "Enter Setor", 
+                Icons.person, widget.edit ? widget.produto.setor : "setor",),
+                textFormFieldPhone(proprietarioEditingController, "Proprietario", "Enter Proprietario", 
+                Icons.person, widget.edit ? widget.produto.proprietario : "proprietario",),
+                textFormFieldPhone(localEditingController, "Local", "Enter Local", 
+                Icons.person, widget.edit ? widget.produto.local : "local",),
                 
                 RaisedButton(
                   color: Colors.red,
@@ -76,16 +84,20 @@ class _ProdutoDetailState extends State<ProdutoDetail> {
                         );
                       }else if (widget.edit == true) {
                         ProdutoDatabaseProvider.db.updateProduto(new Produto(
-                          name: nameEditingController.text,
-                          quantidade: quantidadeEditingController.text,
-                          valor: valorEditingController.text,
+                          descricao: descricaoEditingController.text,
+                          prioridade: prioridadeEditingController.text,
+                          setor: setorEditingController.text,
+                          proprietario: proprietarioEditingController.text,
+                          local: localEditingController.text,
                           id: widget.produto.id ));
                           Navigator.pop(context);
                       } else {
                         await ProdutoDatabaseProvider.db.addProdutoToDatabase(new Produto(
-                          name: nameEditingController.text,
-                          quantidade: quantidadeEditingController.text,
-                          valor: valorEditingController.text,                       
+                          descricao: descricaoEditingController.text,
+                          prioridade: prioridadeEditingController.text,
+                          setor: setorEditingController.text,
+                          proprietario: proprietarioEditingController.text,
+                          local: localEditingController.text,                     
                         ));
                         Navigator.pop(context);
                       }

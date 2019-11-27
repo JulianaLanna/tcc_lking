@@ -21,14 +21,16 @@ class ProdutoDatabaseProvider{
 
   Future<Database> getDatabaseInstanace() async {
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = join(directory.path, "produto.db");
+    String path = join(directory.path, "chamado.db");
      return await openDatabase(path, version: 1,
       onCreate: (Database db, int version) async {
         await db.execute("CREATE TABLE Produto ("
         "id integer primary key,"
-        "name TEXT,"
-        "quantidade TEXT,"
-        "valor TEXT"
+        "descricao TEXT,"
+        "prioridade TEXT,"
+        "setor TEXT,"
+        "proprietario TEXT,"
+        "local TEXT"
         ")");
       });
   }

@@ -12,49 +12,16 @@ class _MenuPageState extends State<MenuPage> {
     Navigator.of(context).pushNamed("/Produto");
   }
 
-  /**
-   * 
-   * Ajustar para fazer a chamada das outras pages
-   * 
-   * Adicionar no rooter la no arquivo: main.dart
-   */
-  void _submitFuncionario() {
-    Navigator.of(context).pushNamed("/home");
-  }
-  void _submitLoja() {
-    Navigator.of(context).pushNamed("/home");
-  }
-  void _submitVenda() {
-    Navigator.of(context).pushNamed("/home");
-  }
-
   @override
   Widget build(BuildContext context) {
     _ctx = context;
 
     var ProdutoBtn = new RaisedButton(
       onPressed: _submitProduto,
-      child: new Text("Produto"),
+      child: new Text("Chamado"),
       color: Colors.blue,
     );
 
-    var FuncBtn = new RaisedButton(
-      onPressed: _submitFuncionario,
-      child: new Text("Funcionario"),
-      color: Colors.blue,
-    );
-
-    var LojaBtn = new RaisedButton(
-      onPressed: _submitLoja,
-      child: new Text("Loja"),
-      color: Colors.blue,
-    );
-
-    var VendaBtn = new RaisedButton(
-      onPressed: _submitVenda,
-      child: new Text("Venda"),
-      color: Colors.blue,
-    );
 
 
 
@@ -62,13 +29,10 @@ class _MenuPageState extends State<MenuPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         new Text(
-          "Tcc Login",
+          "Abertura de Chamado",
           textScaleFactor: 2.0,
         ),
         ProdutoBtn,
-        FuncBtn,
-        LojaBtn,
-        VendaBtn,
       ],
     );
 
