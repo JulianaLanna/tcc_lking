@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MenuPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _MenuPageState createState() => new _MenuPageState();
+  _LoginPageState createState() => new _LoginPageState();
 }
 
-class _MenuPageState extends State<MenuPage> {
+class _LoginPageState extends State<LoginPage> {
   BuildContext _ctx;
 
   void _submitProduto() {
-    Navigator.of(context).pushNamed("/Produto");
+    Navigator.of(context).pushNamed("/Menu");
   }
 
   @override
@@ -18,35 +18,34 @@ class _MenuPageState extends State<MenuPage> {
 
     var ProdutoBtn = new RaisedButton(
       onPressed: _submitProduto,
-      child: new Text("Chamado"),
+      child: new Text("Entrar"),
       color: Colors.blue, 
     );
 
 
 
 
-    var MenuPage = new Column(
+    var LoginPage = new Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         new Text(
-          "Abertura de Chamado",
-          textScaleFactor: 2.0,
+          "Sinpro",
+          textScaleFactor: 3.0,
         ),
+
         ProdutoBtn,
       ],
     );
 
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Menu"),
-      ),
       body: Container(
         child: Center(
-          child: MenuPage,
+          child: LoginPage,
         ),
       ),
     );
   }
 
+  
 }
